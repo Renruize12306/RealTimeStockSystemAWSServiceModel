@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Sample Julia SAM Template
+
+Resources:
+  JuliaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      MemorySize: 1028
+      Timeout: 100
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:PutItem  # Add the desired action(s) here
+              Resource: 'arn:aws:dynamodb:us-east-1:995952994537:table/dynamoAggregatesPerSecondCrypto'  # Modify this to restrict access to specific DynamoDB table(s) if needed
+
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: .
+      DockerTag: julia1.6-v1
+
+Outputs:
+  JuliaFunctionLambdaArn:
+    Description: "Julia Lambda Function ARN"
+    Value: !GetAtt JuliaFunction.Arn
+  JuliaFunctionRoleArn:
+    Description: "Implicit IAM Role created for the Julia function"
+    Value: !GetAtt JuliaFunctionRole.Arn

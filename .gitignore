@@ -1,0 +1,11 @@
+constant.jl
+.DS_Store
+.aws-sam
+src/dummy/*
+cdk/*
+client-ts
+Dockerfile_withkey
+evaluation
+cdk
+Manifest.toml
+
