@@ -1,4 +1,5 @@
 # AWS Service model, streaming the real-time market data
+This is a backend and front end application of streaming real-time market data with various AWS services. 
 
 ## Prerequisites
 * [Installing the AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
